@@ -28,5 +28,6 @@ jobs:
     - name: Login a GitHub Container Registry
       run: echo "${{ secrets.TOKEN_WR }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
 
+      
     - name: Publicar imagen
       run: docker push ghcr.io/${{ github.repository_owner }}/estudiantes-flask:1.0.0
