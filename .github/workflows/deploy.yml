@@ -22,7 +22,7 @@ jobs:
         username: ${{ github.actor }}
         password: ${{ secrets.PRIMER1_TOKEN}}
 
-    - name: Construir la imagen de Docker
+    - name: Construir la imagen de Docker nueva
       run: docker build -t ghcr.io/tonyj0711/ejercicio3:1.0.0 .
 
     - name: Publicar la imagen
