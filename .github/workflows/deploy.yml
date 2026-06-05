@@ -14,20 +14,11 @@ jobs:
     steps:
     - uses: actions/checkout@v4
 
-    - name: Set up Python 3.12
-      uses: actions/setup-python@v3
-      with:
-        python-version: "3.12"
-
-    - name: Instalar dependencias
-      run: pip install -r requeriments.txt 
-
-    - name: Construir imagen Docker
-      run: docker build -t ghcr.io/${{ github.repository_owner }}/estudiantes-flask:1.0.0 .
-
     - name: Login a GitHub Container Registry
       run: echo "${{ secrets.TOKEN_WR }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
 
+    - name: Construir imagen Docker
+      run: docker build -t ghcr.io/${{ github.repository_owner }}/estudiantes-flask:1.0.0 .
 
     - name: Publicar imagen
       run: docker push ghcr.io/${{ github.repository_owner }}/estudiantes-flask:1.0.0
